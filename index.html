@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Analytics Changed Advertising</title>
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --text: #1f1f1f;
+      --muted: #6b6b6b;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --card: #ffffff;
+      --border: #e7e3dc;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(248, 247, 244, 0.86);
+      border-bottom: 1px solid rgba(231, 227, 220, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 82px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .section-card,
+    .metric-card,
+    .stage-card,
+    .example-card,
+    .stake-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 34px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy p {
+      font-size: 1.05rem;
+      color: #333;
+      max-width: 62ch;
+      margin-bottom: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--text);
+      color: white;
+      border-color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #ffffff 0%, #f1f6ff 100%);
+    }
+
+    .hero-card h3,
+    .section-card h2,
+    .timeline-intro h2,
+    .metrics h2,
+    .examples h2,
+    .stakeholders h2,
+    .conclusion h2 {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .mini-stat {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .mini-stat div {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-card {
+      padding: 30px;
+    }
+
+    .section-card p,
+    .timeline-intro p,
+    .conclusion p {
+      color: #333;
+      max-width: 74ch;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 20px;
+    }
+
+    ul.clean {
+      list-style: none;
+      margin-top: 14px;
+      display: grid;
+      gap: 10px;
+      color: #333;
+    }
+
+    ul.clean li {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    ul.clean li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    .timeline-intro {
+      padding: 12px 0 8px;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 28px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      background: linear-gradient(to bottom, #d1d5db, #93c5fd, #1d4ed8);
+      border-radius: 999px;
+    }
+
+    .stage-card {
+      position: relative;
+      margin-left: 48px;
+      padding: 26px;
+    }
+
+    .stage-card::before {
+      content: attr(data-step);
+      position: absolute;
+      left: -45px;
+      top: 24px;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .stage-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .stage-card h3 {
+      font-size: 1.55rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .stage-card p {
+      color: #333;
+      margin-bottom: 18px;
+      max-width: 70ch;
+    }
+
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .key-grid div {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      background: #fafafa;
+    }
+
+    .key-grid strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .metrics-grid,
+    .examples-grid,
+    .stake-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .metrics-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .examples-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stake-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .metric-card,
+    .example-card,
+    .stake-card {
+      padding: 22px;
+    }
+
+    .metric-card span,
+    .example-card span,
+    .stake-card span {
+      display: inline-block;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .metric-card h3,
+    .example-card h3,
+    .stake-card h3 {
+      font-size: 1.18rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .metric-card p,
+    .example-card p,
+    .stake-card p {
+      color: #333;
+      font-size: 0.97rem;
+    }
+
+    .quote-block {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 20px;
+      background: #111827;
+      color: white;
+    }
+
+    .quote-block p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1rem;
+    }
+
+    .conclusion {
+      padding-bottom: 70px;
+    }
+
+    footer {
+      padding: 32px 0 50px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .metrics-grid,
+      .examples-grid,
+      .stake-grid,
+      .key-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .hero-grid,
+      .grid-2,
+      .metrics-grid,
+      .examples-grid,
+      .stake-grid,
+      .key-grid,
+      .mini-stat {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 12px;
+      }
+
+      .stage-card {
+        margin-left: 34px;
+      }
+
+      .stage-card::before {
+        left: -33px;
+      }
+
+      h1 {
+        line-height: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Digital Culture Project</a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#examples">Examples</a>
+        <a href="#stakeholders">Stakeholders</a>
+        <a href="#conclusion">Takeaway</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal visible">
+          <div class="eyebrow">How analytics changed advertising</div>
+          <h1>From Super Bowl giants to scroll-stopping startups</h1>
+          <p>
+            This project explores how modern advertising moved from broad, high-budget campaigns to a world shaped by data, paid social, and now AI. It focuses on how analytics changed who gets to advertise, how brands make decisions, and what audiences see every day on platforms like TikTok and Instagram.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#timeline">Start the story</a>
+            <a class="btn" href="#overview">See the research focus</a>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal">
+          <div>
+            <h3>Research question</h3>
+            <p>
+              How has the rise of data analytics transformed decision-making and effectiveness in modern digital advertising?
+            </p>
+          </div>
+          <div class="mini-stat">
+            <div>
+              <strong>Then</strong>
+              <span>Mass reach</span>
+            </div>
+            <div>
+              <strong>Now</strong>
+              <span>Targeted ads</span>
+            </div>
+            <div>
+              <strong>Next</strong>
+              <span>AI optimization</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="container">
+        <div class="section-card reveal">
+          <h2>Project overview</h2>
+          <p>
+            This website is a visual, story-driven explanation of how paid media evolved. Instead of focusing on heavy statistical analysis, it breaks down the shift in a way that feels easier to understand. The main idea is that data did not replace creativity. It changed how creativity gets tested, delivered, and scaled.
+          </p>
+
+          <div class="grid-2">
+            <div>
+              <h3>Purpose</h3>
+              <ul class="clean">
+                <li>Explain how analytics shapes modern advertising in an approachable way</li>
+                <li>Show how smaller brands can now compete with larger companies</li>
+                <li>Make performance metrics feel less intimidating and more visual</li>
+                <li>Highlight how AI is changing ad creation, targeting, and optimization</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Method</h3>
+              <ul class="clean">
+                <li>Qualitative research through articles, case studies, and industry examples</li>
+                <li>Light quantitative references using impressions, CTR, engagement, and conversions</li>
+                <li>Real-world insight from paid media and social analytics experience</li>
+                <li>A timeline format that shows advertising then, now, and next</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="container">
+        <div class="timeline-intro reveal">
+          <h2>The evolution of paid media</h2>
+          <p>
+            The story of advertising can be simplified into three major stages. First came traditional advertising, where visibility was expensive and mostly reserved for major brands. Then paid social changed the rules by making distribution more accessible and measurable. Now AI is pushing the industry into a new phase built around automation, prediction, and real-time optimization.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="stage-card reveal" data-step="1">
+            <div class="stage-label">Then</div>
+            <h3>Traditional advertising</h3>
+            <p>
+              For decades, the biggest ad moments belonged to the biggest companies. Think Super Bowl commercials, national TV spots, billboards, and glossy brand campaigns. These ads were powerful, but they were expensive, broad, and difficult for smaller brands to enter.
+            </p>
+            <div class="key-grid">
+              <div>
+                <strong>Main players</strong>
+                <p>Large companies like Budweiser and other major national brands</p>
+              </div>
+              <div>
+                <strong>How success worked</strong>
+                <p>Estimated through reach, awareness, and cultural impact rather than precise digital feedback</p>
+              </div>
+              <div>
+                <strong>Big limitation</strong>
+                <p>Only brands with large budgets could consistently compete at scale</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card reveal" data-step="2">
+            <div class="stage-label">Now</div>
+            <h3>Paid social opened the door</h3>
+            <p>
+              Platforms like Instagram, Facebook, and TikTok changed advertising from a high-barrier space into something much more accessible. Small businesses, creators, and startups could suddenly boost posts, launch campaigns, test audiences, and reach people without needing a Super Bowl-sized budget.
+            </p>
+            <div class="key-grid">
+              <div>
+                <strong>What changed</strong>
+                <p>Self-serve ad platforms gave more people access to paid distribution</p>
+              </div>
+              <div>
+                <strong>Why it mattered</strong>
+                <p>Brands could target specific audiences instead of just paying for broad exposure</p>
+              </div>
+              <div>
+                <strong>New advantage</strong>
+                <p>Campaigns became testable, adjustable, and measurable in real time</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card reveal" data-step="3">
+            <div class="stage-label">Next</div>
+            <h3>AI is changing the game again</h3>
+            <p>
+              The newest shift is not just more data. It is smarter systems using data at scale. Tools like Meta Advantage+ show how AI can automate targeting, bidding, budget allocation, and optimization. That means less manual setup and faster decision-making, especially for teams that want efficiency.
+            </p>
+            <div class="key-grid">
+              <div>
+                <strong>AI role</strong>
+                <p>Handles optimization patterns faster than a person manually adjusting every variable</p>
+              </div>
+              <div>
+                <strong>What improves</strong>
+                <p>Speed, efficiency, scalability, and campaign adaptability</p>
+              </div>
+              <div>
+                <strong>What stays important</strong>
+                <p>Creative strategy still matters because AI can optimize delivery, but it cannot fully replace brand voice</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics" class="metrics">
+      <div class="container">
+        <div class="section-card reveal">
+          <h2>How modern advertising measures success</h2>
+          <p>
+            One of the biggest differences between older advertising and digital advertising is measurement. Today, marketers can see how content performs almost instantly. These metrics help brands decide what to keep, what to change, and where to spend money.
+          </p>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span>Metric 01</span>
+              <h3>Impressions</h3>
+              <p>The number of times an ad appears in front of users. This helps show reach and visibility.</p>
+            </div>
+            <div class="metric-card">
+              <span>Metric 02</span>
+              <h3>CTR</h3>
+              <p>Click-through rate shows how often people click after seeing an ad, which signals interest and relevance.</p>
+            </div>
+            <div class="metric-card">
+              <span>Metric 03</span>
+              <h3>Engagement rate</h3>
+              <p>Measures interactions like likes, comments, shares, or saves to show how content connects with audiences.</p>
+            </div>
+            <div class="metric-card">
+              <span>Metric 04</span>
+              <h3>Conversions</h3>
+              <p>Tracks actions that matter most, like purchases, signups, or downloads, making effectiveness easier to prove.</p>
+            </div>
+          </div>
+
+          <div class="quote-block">
+            <p>
+              In other words, advertising is no longer just about getting seen. It is about learning what works, adjusting quickly, and making smarter decisions with each campaign.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples" class="examples">
+      <div class="container">
+        <div class="section-card reveal">
+          <h2>Real examples to ground the shift</h2>
+          <p>
+            These examples help make the timeline more concrete. They show how the structure of advertising changed from mass media dominance to platform-based precision and now into AI-supported automation.
+          </p>
+
+          <div class="examples-grid">
+            <div class="example-card">
+              <span>Traditional</span>
+              <h3>Super Bowl advertising</h3>
+              <p>Represents the era where reach was huge, costs were huge, and only the most established brands could really compete in the biggest moments.</p>
+            </div>
+            <div class="example-card">
+              <span>Social</span>
+              <h3>Sponsored Instagram and TikTok posts</h3>
+              <p>Show how almost any brand can pay to reach a specific audience, test content, and build awareness without massive production budgets.</p>
+            </div>
+            <div class="example-card">
+              <span>Analytics</span>
+              <h3>Performance dashboards</h3>
+              <p>Metrics now make success visible. Brands can compare impressions, engagement, CTR, and conversions instead of relying on rough estimates.</p>
+            </div>
+            <div class="example-card">
+              <span>AI</span>
+              <h3>Meta Advantage+ and automated optimization</h3>
+              <p>Illustrates how machine learning is starting to handle decisions around targeting, budgets, and campaign delivery in real time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stakeholders" class="stakeholders">
+      <div class="container">
+        <div class="section-card reveal">
+          <h2>Who this impacts</h2>
+          <p>
+            This topic matters to more than just marketers. Digital advertising shapes the online experience for brands, creators, and everyday users who may not even realize how much of what they see is influenced by data.
+          </p>
+
+          <div class="stake-grid">
+            <div class="stake-card">
+              <span>Brands</span>
+              <h3>Smarter spending</h3>
+              <p>Analytics helps businesses make more efficient decisions and compete more strategically.</p>
+            </div>
+            <div class="stake-card">
+              <span>Marketers</span>
+              <h3>Better decision-making</h3>
+              <p>Performance data helps refine content, audiences, budget allocation, and platform strategy.</p>
+            </div>
+            <div class="stake-card">
+              <span>Creators</span>
+              <h3>More opportunity</h3>
+              <p>Small creators and startups can become discoverable through paid distribution and platform tools.</p>
+            </div>
+            <div class="stake-card">
+              <span>Users</span>
+              <h3>Curated feeds</h3>
+              <p>What people see online is increasingly shaped by algorithmic decisions, behavioral signals, and ad targeting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conclusion" class="conclusion">
+      <div class="container">
+        <div class="section-card reveal">
+          <h2>The big takeaway</h2>
+          <p>
+            The rise of analytics transformed advertising by making it more targeted, measurable, and adaptable. It lowered the barrier to entry for startups and smaller businesses, while also changing what effective creative looks like. Now, with AI entering the picture, the industry is moving into a stage where optimization happens faster and at a larger scale than ever before.
+          </p>
+          <br />
+          <p>
+            The most important point is that data and creativity are not opposites. The strongest advertising today happens when creative ideas are supported by real insight. That is what makes modern digital advertising both more efficient and more competitive than the old model.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Built as a Digital Culture project exploring the evolution of advertising through analytics, paid social, and AI.
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
