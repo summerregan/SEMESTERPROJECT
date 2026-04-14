@@ -121,17 +121,17 @@ img {
 
 .hero,
 .page-hero {
-  padding: 94px 0 54px;
+  padding: 56px 0 20px;
 }
 
 .small-hero {
-  padding-bottom: 24px;
+  padding-bottom: 8px;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.88fr;
-  gap: 30px;
+  gap: 22px;
   align-items: stretch;
 }
 
@@ -150,7 +150,7 @@ img {
 }
 
 .hero-copy {
-  padding: 42px;
+  padding: 34px;
   position: relative;
   overflow: hidden;
 }
@@ -192,11 +192,11 @@ img {
 
 h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3rem, 6vw, 5.6rem);
+  font-size: clamp(2.7rem, 5.4vw, 5rem);
   line-height: 0.94;
   letter-spacing: -0.055em;
-  margin-bottom: 18px;
-  max-width: 10ch;
+  margin-bottom: 14px;
+  max-width: 12ch;
 }
 
 h2 {
@@ -231,7 +231,7 @@ h3 {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 .btn {
@@ -270,7 +270,7 @@ h3 {
 }
 
 .hero-card {
-  padding: 30px;
+  padding: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -288,7 +288,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 
 .mini-stat div {
@@ -311,12 +311,16 @@ h3 {
 }
 
 section {
-  padding: 28px 0;
+  padding: 12px 0;
 }
 
 .section-card {
-  padding: 34px;
+  padding: 28px;
   background: var(--card-strong);
+}
+
+.section-card p + p {
+  margin-top: 16px;
 }
 
 .section-card p,
@@ -333,7 +337,7 @@ section {
 .examples-grid,
 .key-grid {
   display: grid;
-  gap: 18px;
+  gap: 14px;
 }
 
 .grid-3 {
@@ -341,7 +345,7 @@ section {
 }
 
 .top-gap {
-  margin-top: 24px;
+  margin-top: 18px;
 }
 
 .info-card {
@@ -378,9 +382,9 @@ section {
 
 .timeline {
   position: relative;
-  margin-top: 10px;
+  margin-top: 4px;
   display: grid;
-  gap: 24px;
+  gap: 18px;
 }
 
 .timeline::before {
@@ -397,7 +401,7 @@ section {
 .stage-card {
   position: relative;
   margin-left: 52px;
-  padding: 28px;
+  padding: 24px;
 }
 
 .stage-card::before {
@@ -430,7 +434,7 @@ section {
 
 .key-grid {
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .key-grid div {
@@ -452,12 +456,12 @@ section {
 
 .examples-grid {
   grid-template-columns: repeat(2, 1fr);
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .metric-card,
 .example-card {
-  padding: 24px;
+  padding: 20px;
   background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(250,244,237,0.92));
 }
 
@@ -469,7 +473,7 @@ section {
 }
 
 footer {
-  padding: 34px 0 52px;
+  padding: 22px 0 34px;
   color: var(--muted);
   font-size: 0.95rem;
 }
@@ -547,7 +551,7 @@ footer {
 
   .hero,
   .page-hero {
-    padding-top: 54px;
+    padding: 44px 0 14px;
   }
 
   .hero-copy,
@@ -557,7 +561,7 @@ footer {
   .metric-card,
   .example-card,
   .info-card {
-    padding: 24px;
+    padding: 20px;
   }
 
   .hero-grid,
