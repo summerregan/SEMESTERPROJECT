@@ -61,6 +61,25 @@ a {
   text-decoration: none;
 }
 
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -158,6 +177,7 @@ img {
 .stage-card,
 .example-card,
 .info-card,
+.takeaway-card,
 .visual-panel {
   background: var(--card);
   border: 1px solid var(--border);
@@ -187,6 +207,7 @@ img {
 .hero-copy::after,
 .section-card::after,
 .chart-wrap::after,
+.takeaway-card::after,
 .context-section::after,
 .ai-disclosure::after {
   content: "";
@@ -202,6 +223,7 @@ img {
 .hero-copy:hover::after,
 .section-card:hover::after,
 .chart-wrap:hover::after,
+.takeaway-card:hover::after,
 .context-section:hover::after,
 .ai-disclosure:hover::after {
   animation: surfaceSweep 1.15s ease;
@@ -382,6 +404,7 @@ section {
 .metric-card p,
 .example-card p,
 .info-card p,
+.takeaway-card p,
 .hero-card p {
   color: #34302c;
 }
@@ -463,6 +486,39 @@ section {
   display: inline-block;
   margin: 12px 0;
   font-size: 0.85rem;
+}
+
+.takeaway-card {
+  padding: 20px 22px;
+  margin: 18px 0 4px;
+  overflow: hidden;
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.88), rgba(248,241,232,.8)),
+    linear-gradient(90deg, rgba(183,121,51,.12), rgba(18,58,122,.08));
+}
+
+.takeaway-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-2), var(--accent-3));
+}
+
+.takeaway-card span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--accent-3);
+  font-size: .74rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.takeaway-card p {
+  max-width: 78ch;
+  font-weight: 650;
 }
 
 .timeline {
@@ -588,6 +644,7 @@ footer {
   .stage-card,
   .example-card,
   .info-card,
+  .takeaway-card,
   .visual-panel {
     backdrop-filter: none;
     background: rgba(255, 255, 255, 0.92);
