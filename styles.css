@@ -1658,6 +1658,19 @@ footer {
   animation: trackSweep 3.8s ease-in-out infinite;
 }
 
+.stat-emoji {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(117,96,78,.14);
+  box-shadow: var(--shadow-soft);
+  font-size: 1.25rem;
+}
+
 .stat-num {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(2rem, 4vw, 3.1rem);
