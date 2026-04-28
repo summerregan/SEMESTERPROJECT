@@ -177,7 +177,6 @@ img {
 .stage-card,
 .example-card,
 .info-card,
-.signal-flow,
 .takeaway-card,
 .visual-panel {
   background: var(--card);
@@ -645,7 +644,6 @@ footer {
   .stage-card,
   .example-card,
   .info-card,
-  .signal-flow,
   .takeaway-card,
   .visual-panel {
     backdrop-filter: none;
@@ -724,10 +722,6 @@ footer {
   .metric-card,
   .example-card,
   .info-card,
-  .signal-flow {
-    padding: 20px;
-  }
-
   .hero-grid,
   .grid-3,
   .metrics-grid,
