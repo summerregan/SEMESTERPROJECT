@@ -1154,26 +1154,31 @@ footer {
   gap: 12px;
   transform: rotate(-1.2deg);
   transition: transform .24s ease, box-shadow .24s ease;
+  animation: cardFlash 5.8s ease-in-out infinite;
 }
 
 .pin-card:nth-child(2) {
   margin-top: 0;
   transform: rotate(-1.2deg);
+  animation-delay: .15s;
 }
 
 .pin-card:nth-child(3) {
   margin-top: 26px;
   transform: rotate(1.4deg);
+  animation-delay: .55s;
 }
 
 .pin-card:nth-child(4) {
   margin-top: 8px;
   transform: rotate(-.45deg);
+  animation-delay: .95s;
 }
 
 .pin-card:nth-child(5) {
   margin-top: 34px;
   transform: rotate(1deg);
+  animation-delay: 1.35s;
 }
 
 .pin-card:hover {
@@ -1234,28 +1239,6 @@ footer {
   max-width: 18ch;
 }
 
-.pin-card i {
-  margin-top: auto;
-  display: block;
-  width: 68%;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(18,58,122,.14);
-  box-shadow: 0 18px 0 rgba(18,58,122,.08);
-  position: relative;
-  overflow: hidden;
-  transform-origin: left center;
-}
-
-.pin-card i::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.72), transparent);
-  transform: translateX(-120%);
-  animation: pinSweep 5.6s ease-in-out infinite;
-}
-
 .pin-card.tall {
   min-height: 166px;
 }
@@ -1277,25 +1260,12 @@ footer {
   color: #f7ead7;
 }
 
-.pin-card.dark i {
-  background: rgba(232,168,74,.36);
-  box-shadow: 0 18px 0 rgba(255,255,255,.08);
-}
-
 .pin-card.chart-pin {
   background:
     linear-gradient(90deg, rgba(18,58,122,.08) 1px, transparent 1px),
     linear-gradient(rgba(18,58,122,.08) 1px, transparent 1px),
     rgba(255,255,255,.88);
   background-size: 18px 18px;
-}
-
-.pin-card.chart-pin i {
-  width: 86%;
-  background: linear-gradient(90deg, var(--accent-3), var(--accent-2));
-  box-shadow:
-    0 18px 0 rgba(183,121,51,.36),
-    0 36px 0 rgba(18,58,122,.18);
 }
 
 .visual-panel {
@@ -1705,9 +1675,15 @@ footer {
   50% { opacity: .96; transform: scale(1.05); }
 }
 
-@keyframes pinSweep {
-  0%, 45% { transform: translateX(-120%); }
-  70%, 100% { transform: translateX(120%); }
+@keyframes cardFlash {
+  0%, 100% {
+    border-color: rgba(117,96,78,.15);
+    box-shadow: 0 14px 28px rgba(34,24,16,.08);
+  }
+  48%, 56% {
+    border-color: rgba(183,121,51,.38);
+    box-shadow: 0 18px 36px rgba(183,121,51,.16);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
