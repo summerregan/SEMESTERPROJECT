@@ -30,16 +30,26 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   }
 });
 
-// Animate bar charts when they scroll into view
-const barObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.bar-fill').forEach((bar) => {
-        bar.style.width = bar.dataset.val + '%';
-      });
-      barObserver.unobserve(entry.target);
-    }
+const animateChart = (chart) => {
+  chart.querySelectorAll('.bar-fill').forEach((bar) => {
+    bar.style.width = `${bar.dataset.val || 0}%`;
   });
-}, { threshold: 0.25 });
+};
 
-document.querySelectorAll('.bar-chart').forEach((c) => barObserver.observe(c));
+// Animate bar charts when they scroll into view
+const barCharts = document.querySelectorAll('.bar-chart');
+
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  barCharts.forEach(animateChart);
+} else {
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateChart(entry.target);
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  barCharts.forEach((chart) => barObserver.observe(chart));
+}

@@ -75,7 +75,7 @@ img {
 .brand {
   font-size: 1.02rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   position: relative;
 }
 
@@ -194,7 +194,7 @@ h1 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(2.7rem, 5.4vw, 5rem);
   line-height: 0.94;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   margin-bottom: 14px;
   max-width: 12ch;
 }
@@ -202,13 +202,13 @@ h1 {
 h2 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.7rem, 2.2vw, 2.5rem);
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
   margin-bottom: 14px;
   line-height: 0.98;
 }
 
 h3 {
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   font-size: 1.22rem;
 }
 
@@ -264,7 +264,8 @@ h3 {
 
 .btn:focus-visible,
 .nav-links a:focus-visible,
-.info-card:focus-visible {
+.info-card:focus-visible,
+.source-link:focus-visible {
   outline: 3px solid rgba(18, 58, 122, 0.18);
   outline-offset: 3px;
 }
@@ -378,6 +379,20 @@ section {
   color: var(--accent-3);
   font-weight: 800;
   margin-bottom: 12px;
+}
+
+.source-link,
+.cite-body a {
+  color: var(--accent-3);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.source-link {
+  display: inline-block;
+  margin: 12px 0;
+  font-size: 0.85rem;
 }
 
 .timeline {
@@ -547,6 +562,20 @@ footer {
   .nav-inner {
     align-items: flex-start;
     flex-direction: column;
+    padding: 14px 0;
+  }
+
+  .nav-links {
+    width: 100%;
+    gap: 8px;
+    max-height: 42vh;
+    overflow-y: auto;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a {
+    padding: 8px 11px;
+    font-size: 0.86rem;
   }
 
   .hero,
@@ -611,7 +640,7 @@ footer {
   font-weight: 900;
   color: #e8a84a;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 .stat-item .stat-label {
   font-size: .82rem;
@@ -638,7 +667,7 @@ footer {
 .chart-wrap .chart-title {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.1rem;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   margin-bottom: 4px;
 }
 .chart-wrap .chart-sub {
@@ -750,6 +779,10 @@ footer {
 .compare-body li:last-child { border: none; }
 
 /* Feedback loop visual */
+.loop-wrap {
+  margin-top: 18px;
+}
+
 .loop-step {
   display: flex;
   align-items: center;
@@ -791,6 +824,7 @@ footer {
 
 /* Works cited list */
 .citation-list { list-style: none; }
+.section-card .citation-list { margin-top: 20px; }
 .citation-item {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -814,13 +848,7 @@ footer {
 }
 .cite-body .cite-mla { font-size: .88rem; color: #1e1a16; line-height: 1.6; margin-bottom: 6px; }
 .cite-body .cite-annotation { font-size: .83rem; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
-.cite-body a {
-  font-size: .76rem;
-  color: var(--accent-3);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 600;
-}
+.cite-body a { font-size: .76rem; }
 .cite-body a:hover { color: var(--accent); }
 
 /* Context / paper page */
@@ -852,6 +880,12 @@ footer {
 @media (max-width: 720px) {
   .stat-band-grid { grid-template-columns: 1fr 1fr; }
   .bar-label { width: 78px; font-size: .72rem; }
+  .bar-row { gap: .55rem; }
+  .bar-val { width: 58px; font-size: .7rem; }
   .compare-wrap { grid-template-columns: 1fr; }
   .chart-wrap { padding: 18px; }
+  .citation-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }
