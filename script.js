@@ -29,3 +29,17 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
     link.setAttribute('aria-current', 'page');
   }
 });
+
+// Animate bar charts when they scroll into view
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.bar-fill').forEach((bar) => {
+        bar.style.width = bar.dataset.val + '%';
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('.bar-chart').forEach((c) => barObserver.observe(c));
