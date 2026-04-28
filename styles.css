@@ -547,12 +547,12 @@ section {
 }
 
 .stage-card::before {
-  content: attr(data-step);
+  content: "";
   position: absolute;
-  left: -48px;
-  top: 24px;
-  width: 34px;
-  height: 34px;
+  left: -42px;
+  top: 30px;
+  width: 18px;
+  height: 18px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -740,7 +740,7 @@ footer {
   }
 
   .stage-card::before {
-    left: -33px;
+    left: -25px;
   }
 
   h1 {
@@ -1118,12 +1118,12 @@ section {
 }
 
 .stage-card::before {
-  content: attr(data-step);
+  content: "";
   position: absolute;
-  left: -48px;
-  top: 24px;
-  width: 34px;
-  height: 34px;
+  left: -42px;
+  top: 30px;
+  width: 18px;
+  height: 18px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -1315,7 +1315,7 @@ footer {
   }
 
   .stage-card::before {
-    left: -33px;
+    left: -25px;
   }
 
   h1 {
@@ -1588,21 +1588,6 @@ footer {
   animation: scanDown 3.4s ease-in-out infinite;
 }
 
-.paper-note {
-  position: absolute;
-  z-index: 3;
-  right: 18%;
-  bottom: 24%;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: var(--accent-3);
-  color: #fff;
-  font-size: .72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  animation: noteFloat 3.2s ease-in-out infinite;
-}
-
 .source-visual {
   min-height: 180px;
 }
@@ -1714,11 +1699,6 @@ footer {
 @keyframes scanDown {
   0%, 100% { transform: translateY(-42px); opacity: .2; }
   50% { transform: translateY(58px); opacity: 1; }
-}
-
-@keyframes noteFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
 }
 
 @keyframes sourcePulse {
