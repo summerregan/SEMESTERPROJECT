@@ -805,7 +805,13 @@ z-index: 1;
 }
 
 .flow-copy {
-align-self: center;
+  align-self: center;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.9), rgba(250,244,237,.86));
+  border: 1px solid rgba(117,96,78,.14);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  padding: 22px;
 }
 
 .flow-copy span {
@@ -819,7 +825,8 @@ text-transform: uppercase;
 }
 
 .flow-copy h2 {
-max-width: 12ch;
+  margin-bottom: 10px;
+  max-width: 12ch;
 }
 
 .flow-copy p {
@@ -854,8 +861,9 @@ content: "";
 position: absolute;
 inset: 0;
 background: linear-gradient(115deg, transparent, rgba(255,255,255,.64), transparent);
-transform: translateX(-120%);
-animation: flowSweep 5.8s ease-in-out infinite;
+  transform: translateX(-120%);
+  animation: flowSweep 5.8s ease-in-out infinite;
+  z-index: 0;
 }
 
 .flow-steps div:nth-child(2)::before { animation-delay: .3s; }
@@ -879,18 +887,22 @@ display: none;
 }
 
 .flow-steps span {
-color: var(--accent);
-font-family: Georgia, "Times New Roman", serif;
-font-size: 1.45rem;
-font-weight: 900;
-line-height: 1;
+  color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .flow-steps strong {
-color: #1f1a15;
-font-size: .92rem;
-line-height: 1.1;
-text-transform: uppercase;
+  color: #1f1a15;
+  font-size: .92rem;
+  line-height: 1.1;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 1;
 }
 .visual-panel {
   background: var(--card);
@@ -1925,5 +1937,8 @@ footer {
   .flow-copy h2,
   .flow-copy p {
     max-width: none;
+  }
+  .flow-copy {
+    padding: 18px;
   }
 }
