@@ -177,6 +177,7 @@ img {
 .stage-card,
 .example-card,
 .info-card,
+.picture-card,
 .takeaway-card,
 .visual-panel {
   background: var(--card);
@@ -488,6 +489,55 @@ section {
   font-size: 0.85rem;
 }
 
+.picture-card {
+  overflow: hidden;
+  position: relative;
+  margin: 4px 0 14px;
+  background: rgba(255,255,255,.84);
+}
+
+.picture-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform .7s ease, filter .7s ease;
+}
+
+.picture-card:hover img {
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.025);
+}
+
+.picture-card figcaption {
+  border-top: 1px solid var(--border);
+  color: #34302c;
+  font-size: .9rem;
+  font-weight: 650;
+  line-height: 1.45;
+  padding: 14px 18px 16px;
+  background:
+    linear-gradient(90deg, rgba(183,121,51,.12), transparent 46%),
+    rgba(255,255,255,.74);
+}
+
+.split-picture {
+  display: grid;
+  grid-template-columns: 1.35fr .65fr;
+  align-items: stretch;
+}
+
+.split-picture img {
+  height: 100%;
+}
+
+.split-picture figcaption {
+  display: flex;
+  align-items: center;
+  border-top: 0;
+  border-left: 1px solid var(--border);
+  font-size: 1rem;
+}
+
 .takeaway-card {
   padding: 20px 22px;
   margin: 18px 0 4px;
@@ -644,6 +694,7 @@ footer {
   .stage-card,
   .example-card,
   .info-card,
+  .picture-card,
   .takeaway-card,
   .visual-panel {
     backdrop-filter: none;
@@ -1502,6 +1553,13 @@ footer {
   .bar-val { width: 58px; font-size: .7rem; }
   .compare-wrap { grid-template-columns: 1fr; }
   .chart-wrap { padding: 18px; }
+  .split-picture {
+    grid-template-columns: 1fr;
+  }
+  .split-picture figcaption {
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
   .visual-panel { min-height: 150px; }
   .signal-visual { height: 96px; }
   .screen { min-height: 78px; }
