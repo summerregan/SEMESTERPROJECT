@@ -1692,6 +1692,20 @@ footer {
   font-size: .9rem;
 }
 
+.stat-source a,
+.chart-sub a {
+  color: var(--accent-3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.stat-source a:hover,
+.chart-sub a:hover {
+  color: var(--accent);
+}
+
 .chart-wrap,
 .context-section,
 .ai-disclosure,
